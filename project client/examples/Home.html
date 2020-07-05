@@ -1,0 +1,717 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+   Be the Drop
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="../assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<style>
+
+    .notification {
+        background-color: #555;
+        color: white;
+        text-decoration: none;
+        padding: 15px 26px;
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+    }
+
+        .notification:hover {
+            background: red;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            background: red;
+            color: white;
+        }
+
+        .report{
+
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+               color:white;
+            padding:5px;
+            text-decoration:double;
+            font-size:x-large;
+            font-style:unset;
+               
+        }
+</style>
+<body class="landing-page sidebar-collapse">
+    <nav class="navbar navbar-color-on-scroll navbar-transparent  fixed-top navbar-expand-lg" color-on-scroll="100">
+
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="../../login page/index.html">
+                <i class="material-icons">face</i>  Be The Drop
+            </a>
+
+            <a class="navbar-brand" href="Home.html">
+
+                <p>Home</p>
+            </a>
+
+            <a class="navbar-brand" href="../pendingDonation.html">
+
+                <p>Pending Donations</p>
+            </a>
+
+            <a class="navbar-brand" href="../AcceptedDonations.html">
+
+                <p>Accepted Donations </p>
+            </a>
+
+            <a class="navbar-brand" href="../donationReceivedHistory.html">
+
+                <p>Received Donation history </p>
+            </a>
+
+
+
+            <a class="navbar-brand" href="../Viewproduct.html">
+
+                <p>View Products</p>
+            </a>
+
+
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+
+
+                <li class="nav-item">
+
+                    <a href="../customerOrders.html" class="notification">
+                        <span>Customer Orders</span>
+                        <span id="orderRequest" class="badge">3</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="../Products.html" class="nav-link">
+                        <i class="material-icons">face</i> Add Product
+                    </a>
+
+                </li>
+                <li class="nav-item dropdown" style=" color:important azure">
+                    <a class="btn btn-outline-dark dropdown-toggle" type="text/html" data-toggle="dropdown" href="#" style=" color:!important azure">
+                        Block Account
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="./admin/blockCustumer.html">Customer</a>
+
+                        </li>
+                        <li>  <a href="./admin/blockDonor.html">Donor</a></li>
+
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+    </nav>
+
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/bg3.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="title">Service to humanity is service to God.</h1>
+                    <h4>I want to be remembered as a great friend, an outstanding father, an amazing husband, and a good soul who always strived to serve God and man. And during that time of service on earth, I would like people to think, He brought joy, love, opportunity, and fulfillment to millions of people.</h4>
+                    <br>
+                    <a href="https://youtu.be/AfKn2vUiQuc" target="_blank" class="btn btn-danger btn-raised btn-lg">
+                        <i class="fa fa-play"></i> Watch video
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class=" fixed-bottom" style="background-color:red">
+
+
+        <div class="main main-raised" style="background-color:red">
+            <div class="container">
+                
+                <h2 class="title report" style="margin-left:40%">Be the Drop stats </h2>
+                <div class="row">
+
+
+                    <div class="col-3">
+
+                        <p class="report" id="items">Donation Items: 34</p>
+
+                    </div>
+
+                    <div class="col-3">
+
+                        <p class="report" id="donors">Donors: 456789</p>
+                    </div>
+                    <div class="col-3">
+
+                        <p class="report" id="donations">Donations: 456789</p>
+                    </div>
+                    <div class="col-3">
+
+                        <p class="report" id="products">Products: 456789</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="main main-raised">
+        <div class="container">
+
+
+
+            <div class="section text-center">
+
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="title">Let&apos;s talk product</h2>
+                        <h5 class="description">The aim of this project is to  provides people with many opportunities of community service. Community service or social work is a very noble task that has many positive effects on the receivers as well as the doers. There are many people in Pakistan who have the desire to help the society and do something for its welfare but unfortunately there not many platforms that allow them to serve the society on an individual level. The idea behind this project is to create a platform that opens many doors of community service for the people. This platform will not only show the people what they can do for the humanity but also provide them with the path through which they can perform this noble deed. This project is intended to serve and be beneficial for any individual that has an inner urge to serve the humanity.</h5>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <div class="row">
+                    <div class="col-5">
+                        <div class="main main-raised">
+
+                            <div id="genderchartContainer" style="height: 300px; width: 100%;"></div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-5">
+                        <div class="main main-raised">
+
+                            <div id="citychartContainer" style="height: 300px; width: 100%;"></div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="row">
+
+
+                    <div class="col-5 main main-raised" id="chartContainer1" style="height: 300px; width: 50%;"></div>
+
+
+                    <div class="col-5 main main-raised" id="chartContainer" style="height: 300px; width: 50%;"></div>
+                </div>
+                <br />
+                <br />
+                <div class="features">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-info">
+                                    <i class="material-icons">chat</i>
+                                </div>
+                                <h4 class="info-title">Donate Products</h4>
+                                <p>A charitable donation is a gift made by Be the Drop to a nonprofit organization, charity, or private foundation.Be the Drop Charitable donations are use in the form of , motor vehicles, appreciated securities, clothing, and other assets or services.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-success">
+                                    <i class="material-icons">verified_user</i>
+                                </div>
+                                <h4 class="info-title">Volunteering</h4>
+                                <p>Volunteering is generally considered an altruistic activity where an individual or group provides services for no financial or social gain "to benefit another person, group or organization". ... Many volunteers are specifically trained in the areas they work, such as medicine, education, or emergency rescue..</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <div class="icon icon-danger">
+                                    <i class="material-icons">chat</i>
+                                </div>
+                                <h4 class="info-title">Products</h4>
+                                <p>Off-price retailers are retailers who provide high quality goods at cheap prices. They usually sell second-hand goods, off-the-season items etc. Description: These retailers offer inconsistent assortment of brand name and fashion-oriented soft goods at low prices..</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+         
+        
+           
+            <div class="section text-center">
+                <h2 class="title">Here is our team</h2>
+                <div class="team">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="team-player">
+                                <div class="card card-plain">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <img src="../styles/alina.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                                    </div>
+                                    <h4 class="card-title">
+                                        Alina Zahid
+                                        <br>
+                                        <small class="card-description text-muted">Android Developer</small>
+                                    </h4>
+                                    <div class="card-body">
+                                        <p class="card-description">
+                                            Works at Be the Drop
+                                            Studies BSCS-Computer Science at Capital University of Science & Technology
+
+                                            Lives in Islamabad, Pakistan.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer justify-content-center">
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="team-player">
+                                <div class="card card-plain">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <img src="../styles/qamar.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                                    </div>
+                                    <h4 class="card-title">
+                                        Syed Qamar Abbas
+                                        <br>
+                                        <small class="card-description text-muted">Web Developer</small>
+                                    </h4>
+                                    <div class="card-body">
+                                        <p class="card-description">
+                                            Works at Be the Drop
+                                            Studies BSCS-Computer Science at Capital University of Science & Technology
+
+                                            Lives in Islamabad, Pakistan
+                                        </p>
+                                    </div>
+                                    <div class="card-footer justify-content-center">
+                                        <a href="https://www.facebook.com/qamar929" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="team-player">
+                                <div class="card card-plain">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <img src="../styles/junaid.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                                    </div>
+                                    <h4 class="card-title">
+                                        Junaid Waheed
+                                        <br>
+                                        <small class="card-description text-muted">Graphics Designer</small>
+                                    </h4>
+                                    <div class="card-body">
+                                        <p class="card-description">
+                                            Works at Be the Drop
+                                            Studies BSCS-Computer Science at Capital University of Science & Technology
+
+                                            Lives in Islamabad, Pakistan
+                                        </p>
+                                    </div>
+                                    <div class="card-footer justify-content-center">
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                                        <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer footer-default">
+        <div class="container">
+
+        </div>
+    </footer>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="../assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="../assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+
+</html>
+<script>
+
+
+
+    var donorscount = 0;
+    var rscount = 0;
+    var productscount = 0;
+    var donationcount = 0;
+    var donationItemCount = 0;
+    window.onload = function () {
+        var orders = 0;
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/orders",
+
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+               
+                for (r in result) {
+                    if (result[r].order_status != 1) {
+                      
+                        orders++;
+                    }
+                  
+                }
+
+                document.getElementById("orderRequest").innerHTML = orders;
+
+              
+            },
+            error: function (errormessage) {
+                
+            }
+        });
+
+
+        var dataPoints = [];
+
+        var options = {
+            animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: "Product Risk Data Chart"
+            },
+            axisX: {
+                valueFormatString: "DD MMM YYYY",
+            },
+            axisY: {
+                title: "Donations",
+                titleFontSize: 24,
+                includeZero: false
+            },
+            data: [{
+                type: "spline",
+                name:"Risk Factor",
+                yValueFormatString:"Risk #",
+                dataPoints: dataPoints
+            }]
+        };
+       
+        function addData(data) {
+           
+            for (var i = 0; i < data.length; i++) {
+               
+                dataPoints.push({
+                    x: new Date(data[i].dateDonated),
+                    y: data[i].product_risk
+                });
+            }
+            $("#chartContainer").CanvasJSChart(options);
+
+    }
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/DonationsGraph",
+
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+
+                addData(result);
+            },
+            error: function (errormessage) {
+                ;
+            }
+        });
+     
+       
+
+    }
+
+
+
+
+    var male=0;
+    var female=0;
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/donors",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+                var html = 'Donors: ';
+
+                for (r in result) {
+                    donorscount++;
+
+                    if (result[r].donor_gender == 'male') {
+                        male++;
+                    } else {
+                        female++;
+                    }
+
+                }
+                html += donorscount;
+
+                var options = {
+                    title: {
+                        text: "Donor Gender Poplulation"
+                    },
+                    subtitles: [{
+                        text: "Be the Drop"
+                    }],
+                    animationEnabled: true,
+                    data: [{
+                        type: "pie",
+                        startAngle: 40,
+                        toolTipContent: "<b>{label}</b>: {y}",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+                        indexLabel: "{label} - {y}",
+                        dataPoints: [
+                            { y: male, label: "Male" },
+                            { y: female, label: "Female" }
+                        ]
+                    }]
+                };
+                $("#genderchartContainer").CanvasJSChart(options);
+
+
+               document.getElementById("donors").innerHTML = html;
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+
+
+
+
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/CityGraph",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+          
+              
+             
+               
+                var options = {
+                    title: {
+                        text: "Donors Cities"
+                    },
+                    subtitles: [{
+                        text: "Be the Drop"
+                    }],
+                    animationEnabled: true,
+                    data: [{
+                        type: "pie",
+                        startAngle: 40,
+                        toolTipContent: "<b>{label}</b>: {y}%",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+                        indexLabel: "{label} - {y}",
+                        dataPoints: result
+                    }]
+                };
+                
+               
+               
+                $("#citychartContainer").CanvasJSChart(options);
+                   
+            },
+            error: function (errormessage) {
+
+            }
+        });
+
+
+
+
+
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/donations",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+                var html = 'Donations: ';
+
+                for (r in result) {
+                    donationcount++;
+                }
+                html += donationcount;
+
+
+                document.getElementById("donations").innerHTML = html;
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/DonationItems",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+                var html = 'Donation Items: ';
+
+                for (r in result) {
+                  
+                    donationItemCount++;
+                }
+                html += donationItemCount;
+
+
+               document.getElementById("items").innerHTML = html;
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+
+        $.ajax({
+            url: "https://bethedrop1.azurewebsites.net/api/products",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+
+                 var html = 'Products: ';
+
+                for (r in result) {
+                    productscount++;
+                }
+                html += productscount;
+              
+
+               document.getElementById("products").innerHTML = html;
+
+
+                var options1 = {
+                    animationEnabled: true,
+                    title: {
+                        text: "Be the Drop Stats"
+                    },
+                    data: [{
+                        type: "column", //change it to line, area, bar, pie, etc
+                        legendText: "Be the Drop",
+                        showInLegend: true,
+                        dataPoints: [
+                            { label: "Donation Amount", y: 30 },
+                            { label: "Donors", y: donorscount },
+                            { label: "Donations", y: donationcount },
+                            { label: "Donation Items", y: donationItemCount },
+                            { label: "Products", y: productscount },
+
+                        ]
+                    }]
+                };
+
+                $("#chartContainer1").resizable({
+                    create: function (event, ui) {
+                        //Create chart.
+                        $("#chartContainer1").CanvasJSChart(options1);
+                    },
+                    resize: function (event, ui) {
+                        //Update chart size according to its container size.
+                        $("#chartContainer1").CanvasJSChart().render();
+                    }
+                });
+
+
+
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+
+
+
+
+    });
+
+
+
+
+  
+</script>

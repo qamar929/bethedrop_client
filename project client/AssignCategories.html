@@ -1,0 +1,698 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>Be the Drop</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- Material Kit CSS -->
+    <link href="assets/css/material-kit.css?v=2.0.6" rel="stylesheet" />
+
+    <link href="styles/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<style>
+
+    .notification {
+        background-color: #555;
+        color: white;
+        text-decoration: none;
+        padding: 15px 26px;
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+    }
+
+        .notification:hover {
+            background: red;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            background: red;
+            color: white;
+        }
+</style>
+<body>
+    <div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <!-- Change class .modal-sm to change the size of the modal -->
+        <div class="modal-dialog modal-sm" role="document">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="card card-nav-tabs">
+                    <div class="card-header card-header-danger">
+                        Add Category
+                    </div>
+                    <div class="card-body">
+                        <!-- Name -->
+                        <input type="text" id="categoryname" class="form-control mb-5" placeholder="Category name">
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm btn-round" data-dismiss="modal">Close</button>
+                    <button id="addcategory" type="button" class="btn btn-info btn-sm btn-round" data-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="viewmodal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="card card-nav-tabs">
+                        <div class="card-header card-header-danger">
+                            Sub categories
+                        </div>
+                        <div class="card-body">
+                            <table id="Donationdata1" style="width:100%" class="row-border hover order-column">
+                                <thead>
+                                    <tr>
+                                        <th>Parent Category</th>
+
+                                        <th>Child Category</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="savein1"></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Parent Category</th>
+
+                                        <th>Child Category</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Large subcategory modal -->
+    <div class="modal fade" id="bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="bd-example-modal-xl"
+         aria-hidden="true">
+
+        <!-- Change class .modal-sm to change the size of the modal -->
+        <div class="modal-dialog modal-sm" role="document">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card card-nav-tabs">
+                        <div class="card-header card-header-danger">
+                            Add Sub-Category
+                        </div>
+                        <div class="card-body">
+
+
+
+                            <!-- Name -->
+                            <input type="text" id="subcategoryname" class="form-control mb-5" placeholder="Sub Category name">
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm btn-round" data-dismiss="modal">Close</button>
+                    <button id="subaddcategory" type="button" class="btn btn-info btn-sm btn-round" data-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-color-on-scroll navbar-transparent  fixed-top navbar-expand-lg" color-on-scroll="100">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="../../login page/index.html">
+                    <i class="material-icons">face</i>  Be The Drop
+                </a>
+
+                <a class="navbar-brand" href="./examples/AdminHome.html">
+
+                    <p>Home</p>
+                </a>
+
+              
+
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="../project client/admin/createManager.html" class="nav-link">
+                            <i class="material-icons">face</i> Create Manager
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+
+        </div>
+    </nav>
+
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/bg3.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="brand text-center">
+                        <h1>Be The Drop</h1>
+                        <h3 class="title text-center">Serve for humanity</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-center">
+                <!-- End Navbar -->
+                <div class="content">
+                    <div class="container-fluid">
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card strpied-tabled-with-hover">
+
+
+                                    <div class="card-header ">
+
+                                        <div class="row">
+
+
+
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="card-body table-full-width table-responsive">
+                                        <table id="Donationdata" style="width:100%" class="row-border hover order-column">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Donation Item Name</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="savein"></tbody>
+                                            <tfoot>
+                                                <tr>
+
+
+
+                                                    <th>Donation Item Name</th>
+
+                                                    <th></th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer footer-default">
+        <div class="container">
+            <nav class="float-left">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/abc929/">
+                            Be The Drop
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </footer>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--  Google Maps Plugin  -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+    <script src="styles/jquery.dataTables.min.js"></script>
+
+    <script>
+
+
+        var currentitem;
+        var cate;
+
+        function setCate(name) {
+
+
+            cate = name;
+        }
+
+
+
+        function updatedonationItem(IDs, id, name, des, leftQuantity, img, price, pstatus) {
+
+
+            var Obj = {
+                BItem_Id: IDs,
+                d_id: id,
+                itemName: name,
+                itemDescription: des,
+                itemQuantity: leftQuantity,
+                Item_Categary: cate,
+
+                image: img,
+                price: price,
+                ProductStatus: pstatus
+
+
+            };
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/DonationItems/" + IDs,
+                data: JSON.stringify(Obj),
+                type: "PUT",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    location.reload();
+
+                    alert("Category successfully Assigned");
+                },
+                error: function (errormessage) {
+                    //alert(JSON.stringify(errormessage));
+                }
+            });
+
+        }
+
+
+        function getdonationItems(name) {
+            cate = name;
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/ItemDonationDetailed/" + currentitem,
+                type: "GET",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+
+
+
+                    updatedonationItem(result[0].BItem_Id, result[0].d_id, result[0].itemName, result[0].itemDescription, result[0].itemQuantity, result[0].image, result[0].price, result[0].ProductStatus);
+
+
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+
+        }
+
+
+
+
+
+
+        var subid;
+
+        function smartsearch() {
+
+
+            var table = $('#Donationdata1').DataTable({
+                scrollY: 200,
+                scrollCollapse: true,
+                paging: false
+            });
+
+            $('#Donationdata1 tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+        }
+
+
+
+        function setid(id) {
+            currentitem = id;
+
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/subCategories",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var html = '';
+
+                    for (r in result) {
+                        html += '<tr>';
+
+                        html += '<td>' + result[r].parentcategory + '</td>';
+                        html += '<td>' + result[r].subcategory_Name + '</td>';
+
+                        html += '<td>  <a href="#" onclick="getdonationItems(' + "'" + result[r].subcategory_Name + "'" + ')" > <button style="margin:5px;"  type="button" class="btn btn-info btn-round">Select</button>  </a>    </td>'
+                        html += '</tr>';
+                    }
+
+                    $('#savein1').html(html);
+                    smartsearch();
+                },
+                error: function (errormessage) {
+
+                }
+            });
+
+
+
+        }
+
+
+
+
+
+
+        function pop() {
+
+
+            var table = $('#Donationdata').DataTable();
+
+            $('#Donationdata tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+
+
+
+
+
+            $('#details').click(function () {
+
+
+                var selectedrows = table.rows('.selected').data();
+
+                var GETid = selectedrows[0][0];
+
+                donationitemdata(GETid);
+
+            });
+
+            $('#addcategory').click(function () {
+
+
+                addCategory();
+
+            });
+
+            $('#subaddcategory').click(function () {
+
+
+                addSubCategory();
+
+            });
+        }
+
+        function getaddSubCategory(id) {
+            subid = id;
+        }
+
+
+        function donationitemdata(ID) {
+
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/ItemDonation/" + ID,
+                type: "GET",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var html = '';
+
+                    for (r in result) {
+                        html += '<tr>';
+                        html += '<td>' + result[r].itemName + '</td>';
+
+                        html += '<td>' + result[r].itemQuantity + '</td>';
+                        html += '<td>' + result[r].Item_Categary + '</td>';
+                        html += '<td>' + result[r].price + '</td>';
+
+                        html += '</tr>';
+                    }
+                    $('#savein1').html(html);
+                    smartTableDonationItem();
+
+
+                },
+                error: function (errormessage) {
+
+                }
+            });
+
+        }
+
+        function addCategory() {
+            var Obj = {
+
+
+                category_name: $('#categoryname').val(),
+
+
+            };
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/categories",
+                data: JSON.stringify(Obj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    location.reload();
+                },
+                error: function (errormessage) {
+
+                }
+            });
+        }
+
+        function addSubCategory() {
+
+
+            var Obj = {
+
+                subcategory_Name: $('#subcategoryname').val(),
+                parentcategory: subid
+
+
+            };
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/subCategories",
+                data: JSON.stringify(Obj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    location.reload();
+                },
+                error: function (errormessage) {
+
+                }
+            });
+        }
+
+        function deletesubCategory(id) {
+
+
+            $.ajax({
+
+                url: "https://bethedrop1.azurewebsites.net/api/subCategories/" + id,
+                type: "DELETE",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    alert("Deleted");
+                    location.reload();
+
+                },
+                error: function (errormessage) {
+
+                }
+            });
+
+        }
+
+
+
+        function deleteCategory(id) {
+
+
+            $.ajax({
+
+                url: "https://bethedrop1.azurewebsites.net/api/categories/" + id,
+                type: "DELETE",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    alert("Deleted");
+                    location.reload();
+
+                },
+                error: function (errormessage) {
+
+                }
+            });
+
+        }
+
+        $(document).ready(function () {
+
+
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/DonationItems",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var html = '';
+
+                    for (r in result) {
+
+                        if (result[r].Item_Categary == "Others" || result[r].Item_Categary == "others") {
+                            html += '<tr>';
+
+                            html += '<td>' + result[r].itemName + '</td>';
+
+
+                            html += '<td> <a href="#" onclick="setid(' + "'" + result[r].BItem_Id + "'" + ')" > <button id="viw" style="margin:5px;" data-toggle="modal" data-target="#viewmodal" type="button" class="btn btn-warning btn-round">Assign Category</button>  </a>       </td>'
+                            html += '</tr>';
+                        }
+                    }
+                    $('#savein').html(html);
+                    pop();
+                },
+                error: function (errormessage) {
+
+                }
+            });
+
+
+
+        });
+
+
+
+
+    </script>
+</body>
+
+
+
+</html>
