@@ -62,12 +62,11 @@
                     <div class="card-header card-header-danger">
                         Reason for Reject Donation Request
                     </div>
-                    <div class="card-body">
+                    <div id="reason" class="card-body">
 
 
                         <!-- Name -->
-                        <input type="radio" name="gender" value=" reason1"> Your location is not reachable for us at the moment.
-                        <br />
+                      
                         <input type="radio" name="gender" value=" reason2"> Items you are donating are not required at the moment.
                         <br />
                       
@@ -343,12 +342,17 @@
         $('#addreason').click(function ()  {
 
 
-            var ele = document.getElementsByName('gender');
 
+            var ele = document.getElementsByName('gender');
+         
             for (i = 0; i < ele.length; i++) {
+
                 if (ele[i].checked) {
 
-                    rejecttDonationRequest(GETid, ele[i].value);
+                    
+                    rejectget(GETid,ele[i].value);
+
+                    rejecttDonationRequest(GETid);
 
                 }
             }
@@ -435,6 +439,33 @@
         }
 
         $(document).ready(function () {
+
+
+
+            $.ajax({
+                url: "https://bethedrop1.azurewebsites.net/api/reasons",
+                type: "GET",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+
+html ='';
+                    for (r in result) {
+html +=' <label> <input type="radio" name="gender" value="'+ result[r].reason1 +'" > '+ result[r].reason1 +'  </label>   <br />'
+                        
+                    }
+
+                    document.getElementById("reason").innerHTML = html;
+
+
+                },
+                error: function (errormessage) {
+
+                }
+            });
+
+
+
 
             var orders = 0;
             $.ajax({
@@ -588,10 +619,10 @@
         }
 
 
-        function rejecttDonationRequest(ID,v) {
-
-            rejectget(ID,v);
-
+        function rejecttDonationRequest(ID) {
+           
+         
+           
             $.ajax({
                 url: "https://bethedrop1.azurewebsites.net/api/Donations/" + ID,
                 data: JSON.stringify(d),
@@ -604,7 +635,7 @@
 
                 },
                 error: function (errormessage) {
-
+                   
                 }
             });
         }

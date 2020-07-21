@@ -42,11 +42,12 @@
 
                     <p>Home</p>
                 </a>
+
                 <a class="navbar-brand" href="./createReasons.html">
 
                     <p>Reason</p>
                 </a>
-              
+
 
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +99,7 @@
             <div class="modal-content">
                 <div  id="here" class="card card-nav-tabs">
                     <div class="card-header card-header-danger">
-                        Create Manager
+                        Add Reason
                     </div>
                     <div class="card-body">
 
@@ -112,59 +113,12 @@
                                     <div class="form-group label-floating">
 
                                       
-                                        <label class="control-label">Name <small>(required)</small></label>
-                                        <input id="name" name="name" type="text" class="form-control">
+                                        <label class="control-label">Reason <small>(required)</small></label>
+                                        <input id="name" name="name" type="text" class="form-control" placeholder="enter reason">
                                     </div>
                              
 
-                                <div class="form-group">
-                                  
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Your Email</label>
-                                        <input id="email" name="email" type="text" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                   
-
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">CNIC <small>(required)</small></label>
-                                        <input id="cnic" name="cnic" type="text" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                   
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Contact no </label>
-                                        <input id="contact" name="contact" type="text" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                   
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Your Password</label>
-                                        <input id="password" name="name2" type="password" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                 
-
-                                    <div id="savein" class="form-group label-floating">
-
-
-                                      
-                                       
-
-
-                                      
-                                    </div>
-
-                                </div>
-                                <button type="button" id="register" onclick="addManager()" class="btn btn-info" style="margin-left:290px">Register</button>
+                                <button type="button" id="Add" onclick="addReason()" class="btn btn-info" style="margin-left:290px">Add</button>
 
 
                             </div>
@@ -207,8 +161,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <br />
-                                                <label style="font-size :20px; font:bold ;color:black">Request Accepted
-                                                    Donations </label>
+                                                <label style="font-size :20px; font:bold ;color:black">Add Reason </label>
 
 
 
@@ -221,7 +174,7 @@
                                           
 
                                             <button style="margin:5px;" id="add" class="btn btn-info btn-round"
-                                                data-toggle="modal" data-target="#largeModal">Add Manager</button>
+                                                data-toggle="modal" data-target="#largeModal">Add Reason</button>
 
                                         </div>
                                     </div>
@@ -230,11 +183,9 @@
                                             <thead>
                                                 <tr>
                                                    
-                                                    <th>Manager Name</th>
-                                                    <th>Email</th>
-                                                    <th>CNIC</th>
-                                                    <th>Category</th>
-                                                    <th>Contact no</th>
+                                                    <th>Id</th>
+                                                    <th>Reason</th>
+                                                    
                                                   <th></th>
                                                   
                                                 </tr>
@@ -243,12 +194,9 @@
                                             <tfoot>
                                                 <tr>
                                                   
-                                                    <th>Manager Name</th>
-                                                    <th>Email</th>
-                                                    <th>CNIC</th>
-                                                    <th>Category</th>
-                                                    <th>Contact no</th>
-                                                    <th></th>   
+                                                    <th>Id</th>
+                                                    <th>Reason</th>
+                                                      
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -469,7 +417,7 @@
 
 
         $.ajax({
-                url: "https://bethedrop1.azurewebsites.net/api/Managers",
+                url: "https://bethedrop1.azurewebsites.net/api/reasons",
                 type: "GET",
                 contentType: "application/json",
                 dataType: "json",
@@ -482,13 +430,11 @@
                
                         html += '<tr>';
 
-                        html += '<td>' + result[r].name + '</td>';
-                        html += '<td>' + result[r].email + '</td>';
-                        html += '<td>' + result[r].cnic + '</td>';
-                        html += '<td>' + result[r].category + '</td>';
-                        html += '<td>' + result[r].contact + '</td>';
+                        html += '<td>' + result[r].Id + '</td>';
+                        html += '<td>' + result[r].reason1 + '</td>';
+                      
                    
-                        html += '<td>  <a href="#Msavein" onclick="del(' + "'" + result[r].Manager_Id + "'" + ')" > <button style="margin:5px;"  type="button" class="btn btn-danger btn-round">Delete</button>  </a>    </td>'
+                        html += '<td>  <a href="#Msavein" onclick="del(' + "'" + result[r].Id + "'" + ')" > <button style="margin:5px;"  type="button" class="btn btn-danger btn-round">Delete</button>  </a>    </td>'
 
                        
                         html += '</tr>';
@@ -502,39 +448,6 @@
                 }
             });
 
-
-      
-        $.ajax({
-            url: "https://bethedrop1.azurewebsites.net/api/categories",
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (result) {
-
-             
-                var html = '  <select id="category" class="form-control">';
-
-                 html +=   ' <option disabled="" selected="">Select Category</option>';
-                for (r in result) {
-
-                  
-
-                    html += '<option  value = ' + result[r].category_name + '> ' + result[r].category_name + ' </option >';
-                   
-
-         
-                        }
-               // $('#savein').html(html);
-
-                html += '  </select>';
-                $('#savein').html(html);
-                
-                    },
-            error: function (errormessage) {
-                alert(errormessage.responseText);
-
-            }
-        });
 
 
 
@@ -573,12 +486,12 @@ function del(id)
 
     $.ajax({
 
-url: "https://bethedrop1.azurewebsites.net/api/Managers/" + id,
+url: "https://bethedrop1.azurewebsites.net/api/reasons/" + id,
 type: "DELETE",
 contentType: "application/json;charset=UTF-8",
 dataType: "json",
 success: function (result) {
-    alert("Deleted");
+
     location.reload();
 
 },
@@ -590,26 +503,21 @@ error: function (errormessage) {
 
 
 
-    function addManager() {
+    function addReason() {
 
   
 
      
         var Obj = {
       
-            name: $('#name').val(),
-            password: $('#password').val(),
-            email: $('#email').val(),
-            contact: $('#contact').val(),
-            cnic: $('#cnic').val(),
-            role_id: '2',
-            category: $('#category').val()
+            reason1: $('#name').val(),
+           
         };
 
 
 
         $.ajax({
-            url: "https://bethedrop1.azurewebsites.net/api/Managers",
+            url: "https://bethedrop1.azurewebsites.net/api/reasons",
             data: JSON.stringify(Obj),
             type: "POST",
             contentType: "application/json;charset=utf-8",
@@ -617,7 +525,7 @@ error: function (errormessage) {
             success: function (result) {
 
                 location.reload();
-                alert("Manager add registered");
+             
                
 
             },
